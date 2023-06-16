@@ -16,8 +16,8 @@ Please select an image and rotate it by 45 degrees. An example is shown below.
 You should implement this operation by using near-neighbor and bilinear interpolation methods. Bicubic interpolation is optional. You can get extra credits if you implement all three methods.
 Please compare the results of these two interpolation methods and give some discussion.
 
-![](7x6Rmj.png)
-![](XsOcaQ.png)
+![7x6Rmj.png](https://upload.cc/i1/2023/06/16/7x6Rmj.png)
+![XsOcaQ.png](https://upload.cc/i1/2023/06/16/XsOcaQ.png)
 
 
 
@@ -25,7 +25,7 @@ Please compare the results of these two interpolation methods and give some disc
 
 使用 near-neighbor interpolation 和 bilinear interpolation 旋轉圖片，使用的圖片如下
 
-![](image.jpg)
+![image.jpg](https://github.com/kappa0106/Image-Rotation/blob/main/image.jpg)
 
 
 ### 1.1 Transformation Matrix
@@ -33,7 +33,9 @@ Please compare the results of these two interpolation methods and give some disc
 
 * Transformation Matrix
 
-$$ R = \begin{bmatrix}cos\theta & -sin\theta \\ sin\theta & cos\theta \end{bmatrix} $$
+```math
+R = \begin{bmatrix}cos\theta & -sin\theta \\ sin\theta & cos\theta \end{bmatrix} 
+```
 
 * Code
 ```python
@@ -48,7 +50,7 @@ def transform_matrix(angle):
 ### 1.2 Nearest-neighbor Interpolation
 Nearest-neighbor Interpolation 是一種簡單的插值方法，它會選擇最近的像素值來估計新的像素值。不考慮周圍其他像素的值，容易導致輸出中出現塊狀和像素化外觀。
 
-![](upload_e3005195968324605b17f0add66fc5f4.png)
+![Nearest-neighbor](https://upload.cc/i1/2023/06/16/dYgmbE.png)
 
 
 * 實作步驟
@@ -77,19 +79,21 @@ def nearest(image, matrix):
 
 * result
 
-![](output_nearest.jpg)
+![output_nearest.jpg](https://github.com/kappa0106/Image-Rotation/blob/main/output_nearest.jpg)
 
 ### 1.3 Bilinear Interpolation
 Bilinear Interpolation 會考慮相鄰的像素值來估計新的像素值。採用周圍像素的加權平均值，因此輸出的圖片會有更平滑的過渡邊緣，也保留了更多的圖片細節。
 
-![](upload_276d962ec513dc6cb396630eddf80d8e.png)
-![](upload_37941c4f969a99995ddaef61d9e43175.png)
+![BI](https://upload.cc/i1/2023/06/16/1ziWnV.png)
+![Bilinear Interpolation](https://upload.cc/i1/2023/06/16/JYN6tA.png)
 
 
 * 實作步驟
 旋轉的步驟與 Nearest-neighbor Interpolation 大致相同，但去掉了取整數的步驟，計算新像素值的公式為:
 
-    $f(x,y) \approx f(0,0)(1-x)(1-y)+f(1,0)x(1-y)+f(0,1)(1-x)y+f(1,1)xy$
+```math
+f(x,y) \approx f(0,0)(1-x)(1-y)+f(1,0)x(1-y)+f(0,1)(1-x)y+f(1,1)xy
+```
 
 
 ```python
@@ -126,7 +130,7 @@ def bilinear(image, matrix):
 
 * result
 
-![](output_bilinear.jpg)
+![output_bilinear.jpg](https://github.com/kappa0106/Image-Rotation/blob/main/output_bilinear.jpg)
 ### 1.4 Zooming Comparison
 
 為了更好的比較兩種方法的差別，寫了一個函式將局部放大，以觀察同個位置不同方法的細節。
@@ -142,7 +146,7 @@ def zoom(image, x_start, y_start, zoom_factor):
 ## II. Results and Discussion
 
 ### 2.1 Results
-![](result.jpg) 
+![result.jpg](https://github.com/kappa0106/Image-Rotation/blob/main/result.jpg))
 
 ### 2.2 Discussion
 
